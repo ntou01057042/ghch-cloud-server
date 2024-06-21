@@ -26,4 +26,13 @@ public class TeamController {
                 .toUri();
         return ResponseEntity.created(locationOfNewTeam).build();
     }
+
+    @DeleteMapping("/{id}")
+    private ResponseEntity<Void> deleteTeam(@PathVariable String id) {
+        if (teamRepository.existsById(id)) {
+            teamRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
 }
