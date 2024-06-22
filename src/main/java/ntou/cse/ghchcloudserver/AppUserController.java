@@ -21,10 +21,7 @@ public class AppUserController {
     @GetMapping("/{id}")
     private ResponseEntity<AppUser> findById(@PathVariable String id) {
         Optional<AppUser> appUser = appUserRepository.findById(id);
-        if (appUser.isPresent()) {
-            return ResponseEntity.ok(appUser.get());
-        }
-        return ResponseEntity.notFound().build();
+        return appUser.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
