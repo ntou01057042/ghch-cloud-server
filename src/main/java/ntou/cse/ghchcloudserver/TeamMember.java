@@ -19,10 +19,13 @@ public class TeamMember {
 
     private String username;
 
+    private String teamId;
+
     private String teamName;
 
-    public TeamMember(String username, String teamName) {
+    public TeamMember(String username, String teamId, String teamName) {
         this.username = username;
+        this.teamId = teamId;
         this.teamName = teamName;
     }
 }

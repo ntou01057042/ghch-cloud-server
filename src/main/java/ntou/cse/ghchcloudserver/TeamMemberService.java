@@ -11,8 +11,8 @@ public class TeamMemberService {
         this.teamMemberRepository = teamMemberRepository;
     }
 
-    public void save(String username, String teamName) {
-        TeamMember teamMember = new TeamMember(username, teamName);
+    public void save(String username, String teamId, String teamName) {
+        TeamMember teamMember = new TeamMember(username, teamId, teamName);
         teamMemberRepository.save(teamMember);
     }
 }

@@ -23,7 +23,7 @@ public class TeamController {
     @PostMapping
     public ResponseEntity<Void> createTeam(@RequestBody Team newTeamRequest, UriComponentsBuilder ucb) {
         Team savedTeam = teamRepository.save(newTeamRequest);
-        teamMemberService.save(savedTeam.getOwner(), savedTeam.getTeamName());
+        teamMemberService.save(savedTeam.getOwner(), savedTeam.getId(), savedTeam.getTeamName());
         URI locationOfNewTeam = ucb
                 .path("/teams/{id}")
                 .buildAndExpand(savedTeam.getId())
