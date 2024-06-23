@@ -20,13 +20,10 @@ public class Team {
 
     private String repoName;
 
-    private String[] members;
-
     public Team(String id, Team teamUpdate) {
         this.id = id;
         this.teamName = teamUpdate.teamName;
         this.owner = teamUpdate.owner;
         this.repoName = teamUpdate.repoName;
-        this.members = teamUpdate.members;
     }
 }
