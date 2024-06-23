@@ -1,4 +1,4 @@
-package ntou.cse.ghchcloudserver;
+package ntou.cse.ghchcloudserver.team;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

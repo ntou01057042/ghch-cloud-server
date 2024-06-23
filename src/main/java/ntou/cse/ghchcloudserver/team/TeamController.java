@@ -1,5 +1,6 @@
-package ntou.cse.ghchcloudserver;
+package ntou.cse.ghchcloudserver.team;
 
+import ntou.cse.ghchcloudserver.teammember.TeamMemberService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;

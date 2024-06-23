@@ -1,4 +1,4 @@
-package ntou.cse.ghchcloudserver;
+package ntou.cse.ghchcloudserver.teammember;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

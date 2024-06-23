@@ -1,4 +1,4 @@
-package ntou.cse.ghchcloudserver;
+package ntou.cse.ghchcloudserver.user;
 
 import lombok.Getter;
 import lombok.Setter;

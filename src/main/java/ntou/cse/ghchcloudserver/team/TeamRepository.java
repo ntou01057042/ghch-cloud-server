@@ -1,4 +1,4 @@
-package ntou.cse.ghchcloudserver;
+package ntou.cse.ghchcloudserver.team;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

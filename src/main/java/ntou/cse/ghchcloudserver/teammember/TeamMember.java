@@ -1,4 +1,4 @@
-package ntou.cse.ghchcloudserver;
+package ntou.cse.ghchcloudserver.teammember;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
