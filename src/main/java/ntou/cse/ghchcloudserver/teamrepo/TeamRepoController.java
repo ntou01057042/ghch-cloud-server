@@ -22,11 +22,11 @@ public class TeamRepoController {
     @PostMapping
     public ResponseEntity<Void> createTeamRepo(@RequestBody TeamRepo newTeamRepoRequest, UriComponentsBuilder ucb) {
         TeamRepo savedTeamRepo = teamRepoRepository.save(newTeamRepoRequest);
-        URI locationOfNewTeam = ucb
+        URI locationOfNewTeamRepo = ucb
                 .path("/team-repos/{id}")
                 .buildAndExpand(savedTeamRepo.getId())
                 .toUri();
-        return ResponseEntity.created(locationOfNewTeam).build();
+        return ResponseEntity.created(locationOfNewTeamRepo).build();
     }
 
     @GetMapping("/{teamname}")
