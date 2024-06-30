@@ -18,12 +18,9 @@ public class Team {
 
     private String owner;
 
-    private String repoName;
-
     public Team(String id, Team teamUpdate) {
         this.id = id;
         this.teamName = teamUpdate.teamName;
         this.owner = teamUpdate.owner;
-        this.repoName = teamUpdate.repoName;
     }
 }
