@@ -37,4 +37,13 @@ public class TeamMemberController {
         }
         return ResponseEntity.ok(result);
     }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deleteTeamMemberByTeamId(@RequestParam String teamId) {
+        if (teamMemberRepository.existsByTeamId(teamId)) {
+            teamMemberRepository.deleteByTeamId(teamId);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
 }

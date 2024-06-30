@@ -8,4 +8,8 @@ import java.util.List;
 @Repository
 public interface TeamMemberRepository extends MongoRepository<TeamMember, String> {
     List<TeamMember> findAllByUsername(String username);
+
+    boolean existsByTeamId(String teamId);
+
+    void deleteByTeamId(String teamId);
 }
