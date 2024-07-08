@@ -12,4 +12,6 @@ public interface TeamMemberRepository extends MongoRepository<TeamMember, String
     boolean existsByTeamId(String teamId);
 
     void deleteByTeamId(String teamId);
+
+    List<TeamMember> findAllByTeamName(String teamName);
 }

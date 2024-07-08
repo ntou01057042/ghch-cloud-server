@@ -46,4 +46,14 @@ public class TeamMemberController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @GetMapping
+    public ResponseEntity<List<TeamMember>> findAllByTeamName(@RequestParam String teamName) {
+        // TODO: return sorted pages
+        List<TeamMember> result = teamMemberRepository.findAllByTeamName(teamName);
+        if (result.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(result);
+    }
 }
