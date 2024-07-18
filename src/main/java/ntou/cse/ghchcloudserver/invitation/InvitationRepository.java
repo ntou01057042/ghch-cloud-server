@@ -8,4 +8,6 @@ import java.util.List;
 @Repository
 public interface InvitationRepository extends MongoRepository<Invitation, String> {
     List<Invitation> findAllByUsername(String username);
+
+    List<Invitation> findAllByTeamId(String teamId);
 }
