@@ -8,4 +8,6 @@ import java.util.List;
 @Repository
 public interface RepoInvitationRepository  extends MongoRepository<RepoInvitation, String> {
     List<RepoInvitation> findAllByTeamId(String teamId);
+    boolean existsByInvitationId(String invitationId);
+    void deleteByInvitationId(String invitationId);
 }

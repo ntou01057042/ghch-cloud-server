@@ -26,6 +26,14 @@ public class RepoInvitationController {
                 .toUri();
         return ResponseEntity.created(locationOfNewRepoInvitation).build();
     }
+    @DeleteMapping
+    public ResponseEntity<Void> deleteRepoInvitationByInvitationId(@RequestParam String invitationId) {
+        if (repoInvitationRepository.existsByInvitationId(invitationId)) {
+            repoInvitationRepository.deleteByInvitationId(invitationId);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
 
     @GetMapping("/{teamId}")
     public ResponseEntity<List<RepoInvitation>> findAllByTeamId(@PathVariable String teamId) {
