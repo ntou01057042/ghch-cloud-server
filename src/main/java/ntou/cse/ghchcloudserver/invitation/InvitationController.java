@@ -1,9 +1,6 @@
 package ntou.cse.ghchcloudserver.invitation;
 
-import ntou.cse.ghchcloudserver.team.Team;
-import ntou.cse.ghchcloudserver.teamrepo.TeamRepo;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -35,6 +32,16 @@ public class InvitationController {
     public ResponseEntity<List<Invitation>> findAllByUsername(@PathVariable String username) {
         // TODO: return sorted list
         List<Invitation> result = invitationRepository.findAllByUsername(username);
+        if (result.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Invitation>> findAllByTeamId(@RequestParam String teamId) {
+        // TODO: return sorted list
+        List<Invitation> result = invitationRepository.findAllByTeamId(teamId);
         if (result.isEmpty()) {
             return ResponseEntity.notFound().build();
         }

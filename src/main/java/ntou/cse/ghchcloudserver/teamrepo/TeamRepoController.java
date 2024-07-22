@@ -1,6 +1,5 @@
 package ntou.cse.ghchcloudserver.teamrepo;
 
-import ntou.cse.ghchcloudserver.teammember.TeamMember;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -29,10 +28,10 @@ public class TeamRepoController {
         return ResponseEntity.created(locationOfNewTeamRepo).build();
     }
 
-    @GetMapping("/{teamname}")
-    public ResponseEntity<List<TeamRepo>> findAllByTeamName(@PathVariable String teamname) {
+    @GetMapping("/{teamId}")
+    public ResponseEntity<List<TeamRepo>> findAllByTeamName(@PathVariable String teamId) {
         // TODO: return sorted list
-        List<TeamRepo> result = teamRepoRepository.findAllByTeamName(teamname);
+        List<TeamRepo> result = teamRepoRepository.findAllByTeamId(teamId);
         if (result.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
