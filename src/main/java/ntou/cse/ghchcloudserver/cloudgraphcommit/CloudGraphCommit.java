@@ -6,6 +6,8 @@ import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+
 @Document("cloud-graph-commits")
 @Getter
 @Setter
@@ -24,4 +26,6 @@ public class CloudGraphCommit {
     private String message;
 
     private String committer;
+
+    private Date commitTime;
 }
