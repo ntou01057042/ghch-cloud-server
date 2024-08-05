@@ -19,13 +19,13 @@ public class AppUserController {
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<AppUser> findById(@PathVariable String id) {
+    public ResponseEntity<AppUser> findById(@PathVariable String id) {
         Optional<AppUser> appUser = appUserRepository.findById(id);
         return appUser.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    private ResponseEntity<Void> createAppUser(@RequestBody AppUser newAppUserRequest, UriComponentsBuilder ucb) {
+    public ResponseEntity<Void> createAppUser(@RequestBody AppUser newAppUserRequest, UriComponentsBuilder ucb) {
         AppUser appUser = appUserRepository.findByUsername(newAppUserRequest.getUsername());
         if (appUser != null) {
             URI locationOfNewAppUser = ucb
@@ -40,5 +40,16 @@ public class AppUserController {
                 .buildAndExpand(savedAppUser.getId())
                 .toUri();
         return ResponseEntity.created(locationOfNewAppUser).build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateAppUser(@PathVariable String id, @RequestBody AppUser appUserUpdate) {
+        Optional<AppUser> appUser = appUserRepository.findById(id);
+        if (appUser.isPresent()) {
+            AppUser updatedAppUser = new AppUser(id, appUserUpdate);
+            appUserRepository.save(updatedAppUser);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 }
