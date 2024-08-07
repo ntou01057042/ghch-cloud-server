@@ -24,6 +24,15 @@ public class AppUserController {
         return appUser.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @GetMapping
+    public ResponseEntity<AppUser> findByUsername(@RequestParam String username) {
+        AppUser appUser = appUserRepository.findByUsername(username);
+        if (appUser == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(appUser);
+    }
+
     @PostMapping
     public ResponseEntity<Void> createAppUser(@RequestBody AppUser newAppUserRequest, UriComponentsBuilder ucb) {
         AppUser appUser = appUserRepository.findByUsername(newAppUserRequest.getUsername());
