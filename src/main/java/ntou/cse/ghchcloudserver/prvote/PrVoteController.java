@@ -28,7 +28,7 @@ public class PrVoteController {
     }
 
     @GetMapping("/{owner}/{repo}/{pullNumber}")
-    public ResponseEntity<List<PrVote>> findAllByUsername(@PathVariable String owner, @PathVariable String repo, @PathVariable int pullNumber) {
+    public ResponseEntity<List<PrVote>> findAllByOwnerAndRepoAndPullNumber(@PathVariable String owner, @PathVariable String repo, @PathVariable int pullNumber) {
         List<PrVote> result = prVoteRepository.findAllByRepoOwnerAndRepoNameAndPullNumber(owner, repo, pullNumber);
         if (result.isEmpty()) {
             return ResponseEntity.notFound().build();
