@@ -18,13 +18,14 @@ public class CloudGraphBranchController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> createCloudGraphBranch(@RequestBody CloudGraphBranch newCloudGraphBranchRequest, UriComponentsBuilder ucb) {
-        CloudGraphBranch savedCloudGraphBranch = cloudGraphBranchRepository.save(newCloudGraphBranchRequest);
-        URI locationOfNewCloudGraphBranch = ucb
-                .path("/cloud-graph-branches/{id}")
-                .buildAndExpand(savedCloudGraphBranch.getId())
-                .toUri();
-        return ResponseEntity.created(locationOfNewCloudGraphBranch).build();
+    public ResponseEntity<Void> createCloudGraphBranch(@RequestBody List<CloudGraphBranch> newCloudGraphBranchRequests, UriComponentsBuilder ucb) {
+        cloudGraphBranchRepository.saveAll(newCloudGraphBranchRequests);
+//        CloudGraphBranch savedCloudGraphBranch = cloudGraphBranchRepository.save(newCloudGraphBranchRequest);
+//        URI locationOfNewCloudGraphBranch = ucb
+//                .path("/cloud-graph-branches/{id}")
+//                .buildAndExpand(savedCloudGraphBranch.getId())
+//                .toUri();
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping

@@ -18,13 +18,15 @@ public class CloudGraphCommitController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> createCloudGraphCommit(@RequestBody CloudGraphCommit newCloudGraphCommitRequest, UriComponentsBuilder ucb) {
-        CloudGraphCommit savedCloudGraphCommit = cloudGraphCommitRepository.save(newCloudGraphCommitRequest);
-        URI locationOfNewCloudGraphCommit = ucb
-                .path("/cloud-graph-commit/{id}")
-                .buildAndExpand(savedCloudGraphCommit.getId())
-                .toUri();
-        return ResponseEntity.created(locationOfNewCloudGraphCommit).build();
+    public ResponseEntity<Void> createCloudGraphCommit(@RequestBody List<CloudGraphCommit> newCloudGraphCommitRequests, UriComponentsBuilder ucb) {
+        cloudGraphCommitRepository.saveAll(newCloudGraphCommitRequests);
+//        CloudGraphCommit savedCloudGraphCommit = cloudGraphCommitRepository.save(newCloudGraphCommitRequest);
+//        URI locationOfNewCloudGraphCommit = ucb
+//                .path("/cloud-graph-commit/{id}")
+//                .buildAndExpand(savedCloudGraphCommit.getId())
+//                .toUri();
+//        return ResponseEntity.created(locationOfNewCloudGraphCommit).build();
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping
