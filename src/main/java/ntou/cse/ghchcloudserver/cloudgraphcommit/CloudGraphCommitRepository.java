@@ -10,4 +10,6 @@ public interface CloudGraphCommitRepository extends MongoRepository<CloudGraphCo
     List<CloudGraphCommit> findAllByOwnerAndRepo(String owner, String repo);
 
     void deleteByOwnerAndRepo(String owner, String repo);
+
+    void deleteByOwnerAndRepoAndBranchName(String owner, String repo, String branch);
 }

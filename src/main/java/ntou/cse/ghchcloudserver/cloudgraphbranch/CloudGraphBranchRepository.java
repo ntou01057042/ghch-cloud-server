@@ -11,4 +11,6 @@ public interface CloudGraphBranchRepository extends MongoRepository<CloudGraphBr
     void deleteByOwnerAndRepo(String owner, String repo);
 
     List<CloudGraphBranch> findAllByOwnerAndRepo(String owner, String repo);
+
+    void deleteByOwnerAndRepoAndName(String owner, String repo, String branch);
 }

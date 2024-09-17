@@ -37,9 +37,15 @@ public class CloudGraphCommitController {
         return ResponseEntity.ok(result);
     }
 
-    @DeleteMapping("/{owner}/{repo}")
-    public ResponseEntity<Void> deleteCloudGraphCommit(@PathVariable String owner, @PathVariable String repo) {
+    @DeleteMapping("/all/{owner}/{repo}")
+    public ResponseEntity<Void> deleteAllCloudGraphCommits(@PathVariable String owner, @PathVariable String repo) {
         cloudGraphCommitRepository.deleteByOwnerAndRepo(owner, repo);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{owner}/{repo}")
+    public ResponseEntity<Void> deleteCloudGraphCommit(@PathVariable String owner, @PathVariable String repo, @RequestParam String branch) {
+        cloudGraphCommitRepository.deleteByOwnerAndRepoAndBranchName(owner, repo, branch);
         return ResponseEntity.noContent().build();
     }
 }

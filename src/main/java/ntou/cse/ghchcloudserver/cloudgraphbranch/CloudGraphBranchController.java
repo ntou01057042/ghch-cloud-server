@@ -37,9 +37,15 @@ public class CloudGraphBranchController {
         return ResponseEntity.ok(result);
     }
 
-    @DeleteMapping("/{owner}/{repo}")
-    public ResponseEntity<Void> deleteCloudGraphBranch(@PathVariable String owner, @PathVariable String repo) {
+    @DeleteMapping("/all/{owner}/{repo}")
+    public ResponseEntity<Void> deleteAllCloudGraphBranches(@PathVariable String owner, @PathVariable String repo) {
         cloudGraphBranchRepository.deleteByOwnerAndRepo(owner, repo);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{owner}/{repo}")
+    public ResponseEntity<Void> deleteCloudGraphBranch(@PathVariable String owner, @PathVariable String repo, @RequestParam String branch) {
+        cloudGraphBranchRepository.deleteByOwnerAndRepoAndName(owner, repo, branch);
         return ResponseEntity.noContent().build();
     }
 }
