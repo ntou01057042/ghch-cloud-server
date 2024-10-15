@@ -54,17 +54,36 @@ public class ResetController {
 
     @DeleteMapping("/{documentName}")
     public ResponseEntity<Void> deleteDocumentByDocumentName(@PathVariable String documentName) {
-        switch (documentName) {
-            case "cloud-graph-branch" -> cloudGraphBranchRepository.deleteAll();
-            case "cloud-graph-commit" -> cloudGraphCommitRepository.deleteAll();
-            case "invitation" -> invitationRepository.deleteAll();
-            case "pr-vote" -> prVoteRepository.deleteAll();
-            case "repo-invitation" -> repoInvitationRepository.deleteAll();
-            case "team" -> teamRepository.deleteAll();
-            case "team-member" -> teamMemberRepository.deleteAll();
-            case "team-repo" -> teamRepoRepository.deleteAll();
-            case "app-user" -> appUserRepository.deleteAll();
+        if (documentName == "cloud-graph-branch") {
+            cloudGraphBranchRepository.deleteAll();
+        } else if (documentName == "cloud-graph-commit") {
+            cloudGraphCommitRepository.deleteAll();
+        } else if (documentName == "invitation") {
+            invitationRepository.deleteAll();
+        } else if (documentName == "pr-vote") {
+            prVoteRepository.deleteAll();
+        } else if (documentName == "repo-invitation") {
+            repoInvitationRepository.deleteAll();
+        } else if (documentName == "team") {
+            teamRepository.deleteAll();
+        } else if (documentName == "team-member") {
+            teamMemberRepository.deleteAll();
+        } else if (documentName == "team-repo") {
+            teamRepoRepository.deleteAll();
+        } else if (documentName == "app-user") {
+            appUserRepository.deleteAll();
         }
+//        switch (documentName) {
+//            case "cloud-graph-branch" -> cloudGraphBranchRepository.deleteAll();
+//            case "cloud-graph-commit" -> cloudGraphCommitRepository.deleteAll();
+//            case "invitation" -> invitationRepository.deleteAll();
+//            case "pr-vote" -> prVoteRepository.deleteAll();
+//            case "repo-invitation" -> repoInvitationRepository.deleteAll();
+//            case "team" -> teamRepository.deleteAll();
+//            case "team-member" -> teamMemberRepository.deleteAll();
+//            case "team-repo" -> teamRepoRepository.deleteAll();
+//            case "app-user" -> appUserRepository.deleteAll();
+//        }
         return ResponseEntity.noContent().build();
     }
 }
